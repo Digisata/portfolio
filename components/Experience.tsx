@@ -1,70 +1,61 @@
-// // "use client";
+"use client";
 
-// // import React from "react";
-// // import {
-// //   VerticalTimeline,
-// //   VerticalTimelineElement,
-// // } from "react-vertical-timeline-component";
-// // import "react-vertical-timeline-component/style.min.css";
+import { useRef } from "react";
+import { experienceData } from "@/lib/data";
+import Image from "next/image";
+import { easeInOut, motion, useScroll, useTransform } from "framer-motion";
+import { FaGithub } from "react-icons/fa";
+import { GoLinkExternal } from "react-icons/go";
+import { MdArrowOutward } from "react-icons/md";
 
-// // import { experiencesData } from "@/lib/data";
-// // import SectionHeading from "./SectionHeading";
+type ExperienceProps = (typeof experienceData)[number];
 
-// "use client";
+export default function Experience({
+  company,
+  location,
+  position,
+  period,
+  type,
+  bullets,
+}: ExperienceProps) {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["0 1", "1.33 1"],
+  });
+  const scaleProgess = useTransform(scrollYProgress, [0, 1], [0.65, 1]);
+  const opacityProgess = useTransform(scrollYProgress, [0, 1], [0.65, 1]);
 
-// import React from "react";
-// import SectionHeading from "./SectionHeading";
-// import {
-//   VerticalTimeline,
-//   VerticalTimelineElement,
-// } from "react-vertical-timeline-component";
-// import "react-vertical-timeline-component/style.min.css";
-// import { experiencesData } from "@/lib/data";
-// import { useSectionInView } from "@/lib/hooks";
-// import { useTheme } from "@/context/theme-context";
-
-// export default function Experience() {
-//   // const { ref } = useSectionInView("Experience", 0);
-//   const { theme } = useTheme();
-
-//   return (
-//     <section id="experience" className="scroll-mt-28 mb-28 sm:mb-40">
-//       <SectionHeading>My experience</SectionHeading>
-//       <VerticalTimeline lineColor="">
-//         {experiencesData.map((item, index) => (
-//           <React.Fragment key={index}>
-//             <VerticalTimelineElement
-//               contentStyle={{
-//                 background:
-//                   theme === "light" ? "#f3f4f6" : "rgba(255, 255, 255, 0.05)",
-//                 boxShadow: "none",
-//                 border: "1px solid rgba(0, 0, 0, 0.05)",
-//                 textAlign: "left",
-//                 padding: "1.3rem 2rem",
-//               }}
-//               contentArrowStyle={{
-//                 borderRight:
-//                   theme === "light"
-//                     ? "0.4rem solid #9ca3af"
-//                     : "0.4rem solid rgba(255, 255, 255, 0.5)",
-//               }}
-//               date={item.date}
-//               icon={item.icon}
-//               iconStyle={{
-//                 background:
-//                   theme === "light" ? "white" : "rgba(255, 255, 255, 0.15)",
-//                 fontSize: "1.5rem",
-//               }}
-//             >
-//               <h3 className="font-semibold capitalize">{item.title}</h3>
-//               <p className="font-normal !mt-0">{item.location}</p>
-//               <p className="!mt-1 !font-normal text-gray-700 dark:text-white/75">
-//                 {item.description}
-//               </p>
-//             </VerticalTimelineElement>
-//           </React.Fragment>
-//         ))}
-//       </VerticalTimeline>
-//     </section>
-//   );
-// }
+  return (
+    <motion.div
+      ref={ref}
+      style={{
+        scale: scaleProgess,
+        opacity: opacityProgess,
+      }}
+      transition={{
+        duration: 0.3,
+        ease: easeInOut,
+      }}
+      className="bg-gray-100 mb-12 p-8 rounded hover:bg-gray-200 dark:bg-[#121212] dark:hover:bg-white/10 dark:text-white"
+    >
+      <div className="mb-3">
+        <h3 className="text-xl font-semibold">
+          {company}{" "}
+          <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
+            | {type}
+          </span>
+        </h3>
+        <p className="text-sm text-gray-700 dark:text-white/70">{location}</p>
+        <p className="text-sm font-medium">
+          {position} • <span className="text-gray-500">{period}</span>
+        </p>
+      </div>
+      <ul className="list-disc pl-5 space-y-1 text-gray-800 dark:text-white/80 text-sm">
+        {bullets.map((item, i) => (
+          <li key={i}>{item}</li>
+        ))}
+      </ul>
+    </motion.div>
+  );
+}

@@ -11,6 +11,7 @@ import Contact from "@/components/Contact";
 import SocialLinks from "@/components/SocialLinks";
 
 const DynamicProjects = dynamic(() => import("@/components/Projects"));
+const DynamicExperiences = dynamic(() => import("@/components/Experiences"));
 const DynamicSkills = dynamic(() => import("@/components/Skills"));
 
 interface ClearAndLogMessageProps {
@@ -53,6 +54,7 @@ export default function Home() {
       {/* <Projects />
        */}
       {/* <Skills /> */}
+      <DynamicExperiences />
       <DynamicProjects />
       {/* <DynamicSkills /> */}
       <Skills />

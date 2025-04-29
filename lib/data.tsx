@@ -16,6 +16,7 @@ import { GoHome } from "react-icons/go";
 import { RxPerson } from "react-icons/rx";
 import { MdOutlineWorkOutline, MdOutlineEmail } from "react-icons/md";
 import { SiPolywork } from "react-icons/si";
+import { MdLocalFireDepartment } from "react-icons/md";
 
 export const links = [
   {
@@ -29,6 +30,11 @@ export const links = [
     icon: <RxPerson />,
   },
   {
+    name: "Experiences",
+    hash: "#experiences",
+    icon: <MdOutlineWorkOutline />,
+  },
+  {
     name: "Projects",
     hash: "#projects",
     icon: <SiPolywork />,
@@ -36,7 +42,7 @@ export const links = [
   {
     name: "Skills",
     hash: "#skills",
-    icon: <MdOutlineWorkOutline />,
+    icon: <MdLocalFireDepartment />,
   },
 
   {
@@ -102,6 +108,80 @@ export const projectsData = [
     tags: ["Golang", "PostgreSQL", "REST API"],
     imageUrl: kideco,
     live: "https://one.kideco.co.id/login",
+  },
+] as const;
+
+export const experienceData = [
+  {
+    company: "PT.Sinergi Rajawali Mataram",
+    location: "South Jakarta, DKI",
+    position: "Backend Engineer",
+    period: "November 2024 – Present",
+    type: "Contract",
+    bullets: [
+      "Placement at Direktorat Jenderal Imigrasi.",
+      "Responsible for full development lifecycle, designing, developing, testing, deploying, maintaining, monitoring, and improving the SSO project.",
+      "SSO (single sign-on) is a customized app from an open source project used to solve challenges related to authentication, authorization, security, and monitoring.",
+      "Integrated with new and existing applications to support SSO implementation.",
+    ],
+  },
+  {
+    company: "PT Transnovasi Bangun Persada",
+    location: "South Jakarta, DKI",
+    position: "Backend Engineer",
+    period: "April 2024 – July 2024",
+    type: "Contract",
+    bullets: [
+      "Worked on K3I platform supporting the operations of the National Police Traffic Corps (Korlantas Polri).",
+      "Implemented real-time police tracking using Google Maps and developed communication and duty management systems.",
+      "Supported critical national operations such as Ketupat, Nataru, and international escorts.",
+    ],
+  },
+  {
+    company: "BPJS Ketenagakerjaan",
+    location: "South Jakarta, DKI",
+    position: "Backend Engineer",
+    period: "April 2023 – April 2024",
+    type: "Contract",
+    bullets: [
+      "Assigned to the PTI department in the PMK squad.",
+      "Developed and maintained the CNS project, a centralized system for managing various notification types.",
+      "Implemented CQRS pattern, wrote testable code, performed debugging and bug fixing.",
+      "Built microservices architecture for scalable, modular, and resilient applications.",
+    ],
+  },
+  {
+    company: "PT. Bixbox Teknologi Perkasa (Refactory)",
+    location: "Sleman, DIY",
+    position: "Software Engineer",
+    period: "September 2021 – September 2022",
+    type: "Contract",
+    bullets: [
+      "Part of the Engineering division, worked on various client projects.",
+      "Involved in Android, frontend, and backend development using Kotlin, Java, PHP, Laravel, Go, and more.",
+      "Implemented design patterns including Microservices, Monolithic, MVC, MVVM.",
+      "Collaborated with cross-functional teams using tools like Jira, Slack, and Microsoft Teams.",
+    ],
+  },
+  {
+    company: "PT. Prima Mandiri Komunikasi",
+    location: "Yogyakarta, DIY",
+    position: "Mobile App Developer",
+    period: "January 2021 – October 2021",
+    type: "Contract",
+    bullets: [
+      "Handled full development lifecycle of cross-platform apps using Flutter for Android and iOS.",
+    ],
+  },
+  {
+    company: "PT. Oninyon Revolusi Kreatif Indonesia",
+    location: "Yogyakarta, DIY",
+    position: "Mobile App Developer",
+    period: "October 2020 – January 2021",
+    type: "Internship",
+    bullets: [
+      "Developed and maintained cross-platform mobile apps using Flutter for Android.",
+    ],
   },
 ] as const;
 
