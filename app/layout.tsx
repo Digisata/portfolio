@@ -11,8 +11,8 @@ import ThemeContextProvider from "@/context/theme-context";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Jabeed | Portfolio",
-  description: "Syed Jabeed is a full-stack MERN web developer based india.",
+  title: "Naufal | Portfolio",
+  description: "Naufal is a backend developer based indonesia.",
 };
 
 export default function RootLayout({
