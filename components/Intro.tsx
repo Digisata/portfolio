@@ -8,7 +8,7 @@ import { BsArrowRight, BsLinkedin } from "react-icons/bs";
 import { FaLinkedin, FaCat, FaGithub, FaInstagram } from "react-icons/fa";
 import { HiDownload } from "react-icons/hi";
 import { FaGithubSquare } from "react-icons/fa";
-import HeroImg from "../public/profile.jpg";
+import HeroImg from "../public/profile.jpeg";
 
 import { useSectionInView } from "@/lib/hooks";
 import { useActiveSectionContext } from "@/context/active-section-context";
