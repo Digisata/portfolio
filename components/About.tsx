@@ -41,8 +41,7 @@ export default function About() {
           </span>
           . My toolbox includes Go, PostgreSQL, Docker, Kafka, gRPC, Redis, and
           more. Beyond just writing code, I believe in writing code that
-          lasts—maintainable, testable, and built for scale. on a transformative
-          journey as a{" "}
+          lasts—maintainable, testable, and built for scale.
         </p>
 
         {/* <p>
