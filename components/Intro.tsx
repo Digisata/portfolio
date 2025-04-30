@@ -91,7 +91,7 @@ export default function Intro() {
         Hey there!{" "}
         <span className="hover:underline">
           {" "}
-          I&apos;m <span className="font-semibold cursor-pointer">Naufal</span>
+          I&apos;m <span className="font-semibold cursor-pointer">Hanif Naufal</span>
         </span>{" "}
         , a backend engineer from Yogyakarta, Indonesia with 4+ years of
         professional experience. I specialize in crafting robust, scalable
