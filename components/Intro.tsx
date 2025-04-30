@@ -152,7 +152,7 @@ export default function Intro() {
           className="flex items-center gap-6 md:hidden mt-4"
         >
           <a
-            href="https://www.linkedin.com/in/iamjabeed"
+            href="https://www.linkedin.com/in/khairunnaufal-hanif"
             target="_blank"
             className="bg-transparent w-[2rem] h-[2rem] bg-opacity-80 backdrop-blur-md shadow-2xl rounded-full flex items-center justify-center active:scale-105 transition-all  opacity-80 hover:opacity-100 hover:scale-105 duration-300"
           >
@@ -160,18 +160,11 @@ export default function Intro() {
           </a>
 
           <a
-            href="https://github.com/iamjabeed"
+            href="https://github.com/Digisata"
             target="_blank"
             className="bg-transparent w-[2rem] h-[2rem] bg-opacity-80 backdrop-blur-md shadow-2xl rounded-full flex items-center justify-center active:scale-105 transition-all  opacity-80 hover:opacity-100 hover:scale-105 duration-300"
           >
             <FaGithub size={22} />
-          </a>
-          <a
-            href="https://www.instagram.com/iamjabeed_04/"
-            target="_blank"
-            className="bg-transparent w-[2rem] h-[2rem] bg-opacity-80 backdrop-blur-md shadow-2xl rounded-full flex items-center justify-center active:scale-105 transition-all  opacity-80 hover:opacity-100 hover:scale-105 duration-300"
-          >
-            <FaInstagram size={22} />
           </a>
         </motion.div>
       </motion.div>
