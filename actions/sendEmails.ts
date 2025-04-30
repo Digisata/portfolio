@@ -10,7 +10,6 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 export const sendEmail = async (formData: FormData) => {
   const email = formData.get("email")?.toString();
   const message = formData.get("message")?.toString();
-  const name = formData.get("name")?.toString();
   const honeypot = formData.get("honeypot");
 
   if (honeypot) {
@@ -37,7 +36,6 @@ export const sendEmail = async (formData: FormData) => {
       subject: "Message from portfolio contact form",
       reply_to: email,
       react: React.createElement(CustomEmail, {
-        name,
         message,
         email,
       }),
