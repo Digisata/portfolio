@@ -85,12 +85,16 @@ const Contact = () => {
           toast.success("Email sent successfully!");
         }}
       >
+        {/* Honeypot field for bot prevention */}
+        <input type="text" name="honeypot" className="hidden" />
+
         <div className="flex justify-between items-center gap-2">
           <input
             className="h-10 md:h-12 2xl:h-14 px-4 rounded borderBlack dark:bg-[#151313]  transition-all outline-none w-1/2  focus:border-[#FF2E63] placeholder-gray-800 text-gray-900 dark:placeholder-[#eaeaeab9] dark:text-[#fdfdfd]"
+            name="name"
             type="text"
             required
-            maxLength={500}
+            maxLength={100}
             placeholder="Your name"
           />
           <input
@@ -102,6 +106,7 @@ const Contact = () => {
             placeholder="Your email"
           />
         </div>
+
         <textarea
           className="h-40 my-3 rounded-md borderBlack p-4 dark:bg-[#151313]  transition-all outline-none focus:border-[#FF2E63] placeholder-gray-800 text-gray-900 dark:placeholder-[#eaeaeab9] dark:text-[#fdfdfd]"
           name="message"
