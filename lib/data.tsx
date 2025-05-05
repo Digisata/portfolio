@@ -186,6 +186,11 @@ export const experienceData = [
 ] as const;
 
 export const skillsData = [
+  "Communication",
+  "Problem Solving",
+  "Attention to Detail",
+  "Analytical",
+  "Troubleshooting",
   "Go",
   "Rust",
   "Linux",
