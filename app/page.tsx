@@ -1,18 +1,17 @@
 "use client";
-import { useEffect } from "react";
-import dynamic from "next/dynamic";
+
 import About from "@/components/About";
+import Contact from "@/components/Contact";
 import Intro from "@/components/Intro";
 import SectionDivider from "@/components/SectionDivider";
-// import Projects from "@/components/Projects";
-import Skills from "@/components/Skills";
-// import Experience from "@/components/Experience";
-import Contact from "@/components/Contact";
-import SocialLinks from "@/components/SocialLinks";
+import { CustomerResponse, getCustomerByEmail } from "@/lib/api";
+import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
 
 const DynamicProjects = dynamic(() => import("@/components/Projects"));
 const DynamicExperiences = dynamic(() => import("@/components/Experiences"));
 const DynamicSkills = dynamic(() => import("@/components/Skills"));
+const DynamicSocials = dynamic(() => import("@/components/SocialLinks"));
 
 interface ClearAndLogMessageProps {
   message: string;
@@ -25,7 +24,31 @@ const clearAndLogMessage = ({ message, styles }: ClearAndLogMessageProps) => {
 };
 
 export default function Home() {
+  const defaultProfile: CustomerResponse = {
+    _id: "",
+    name: "",
+    email: "",
+    phone: "",
+    wa_link: "",
+    intro: "",
+    about: "",
+    profile_picture: "",
+    created_at: "",
+  };
+  const [profile, setProfile] = useState<CustomerResponse>(defaultProfile);
+
   useEffect(() => {
+    const fetchCustomerData = async () => {
+      try {
+        const res = await getCustomerByEmail("hnaufal123@gmail.com");
+        setProfile(res);
+      } catch (error) {
+        console.error("Failed to fetch customer profile:", error);
+      }
+    };
+
+    fetchCustomerData();
+
     const customMessage = `
       🚀 Welcome to My Portfolio! 🚀
 
@@ -47,19 +70,14 @@ export default function Home() {
 
   return (
     <main className="flex flex-col items-center px-4">
-      <Intro />
-      <SocialLinks />
+      <Intro profile={profile!} />
+      <DynamicSocials />
       <SectionDivider />
-      <About />
-      {/* <Projects />
-       */}
-      {/* <Skills /> */}
+      <About profile={profile!} />
       <DynamicExperiences />
       <DynamicProjects />
-      {/* <DynamicSkills /> */}
-      <Skills />
-      {/* <Experience /> */}
-      <Contact />
+      <DynamicSkills />
+      <Contact profile={profile!} />
     </main>
   );
 }

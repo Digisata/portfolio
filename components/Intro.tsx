@@ -1,19 +1,21 @@
 "use client";
 
-import Image from "next/image";
-// import {Bungee Spice} from "next/font/google"
-import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { BsArrowRight, BsLinkedin } from "react-icons/bs";
-import { FaLinkedin, FaCat, FaGithub, FaInstagram } from "react-icons/fa";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import { BsArrowRight } from "react-icons/bs";
+import { FaCat } from "react-icons/fa";
 import { HiDownload } from "react-icons/hi";
-import { FaGithubSquare } from "react-icons/fa";
-import HeroImg from "../public/profile.jpeg";
 
-import { useSectionInView } from "@/lib/hooks";
 import { useActiveSectionContext } from "@/context/active-section-context";
+import { CustomerResponse } from "@/lib/api";
+import { useSectionInView } from "@/lib/hooks";
 
-export default function Intro() {
+interface Props {
+  profile: CustomerResponse;
+}
+
+export default function Intro({ profile }: Props) {
   const { ref } = useSectionInView("Home", 0.5);
   const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
 
@@ -25,20 +27,13 @@ export default function Intro() {
       let hours = now.getHours();
       const minutes = now.getMinutes();
       const amPm = hours >= 12 ? "PM" : "AM";
-
-      // Convert to 12-hour format
       hours = hours % 12 || 12;
-
-      const formattedTime = `${hours}:${
-        minutes < 10 ? "0" : ""
-      }${minutes} ${amPm}`;
+      const formattedTime = `${hours}:${minutes < 10 ? "0" : ""}${minutes} ${amPm}`;
       setCurrentTime(formattedTime);
     };
+
     updateTime();
-
-    //* Update time every minute
     const intervalId = setInterval(updateTime, 15000);
-
     return () => clearInterval(intervalId);
   }, []);
 
@@ -62,22 +57,19 @@ export default function Intro() {
           <motion.div
             initial={{ opacity: 0, scale: 0.5, y: 100 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{
-              // type: "spring",
-              duration: 0.6,
-              delay: 0.4,
-            }}
+            transition={{ duration: 0.6, delay: 0.4 }}
           >
             <Image
-              src={HeroImg}
-              alt="Hero image"
+              src={
+                profile.profile_picture || "https://placehold.co/600x400/png"
+              } // fallback
+              alt="Profile"
               width={192}
               height={192}
               quality={95}
               priority
               className="w-48 h-48 rounded-full object-cover shadow-xl pointer-events-none"
             />
-            <div className="absolute top-0 left-0 w-full h-full pointer-events-none"></div>
           </motion.div>
         </motion.div>
       </motion.div>
@@ -88,17 +80,7 @@ export default function Intro() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.5 }}
       >
-        Hey there!{" "}
-        <span className="hover:underline">
-          {" "}
-          I&apos;m <span className="font-semibold cursor-pointer">Hanif Naufal</span>
-        </span>{" "}
-        , a backend engineer from Yogyakarta, Indonesia with 4+ years of
-        professional experience. I specialize in crafting robust, scalable
-        systems that solve real-world problems—ranging from national government
-        platforms to high-volume fintech and POS systems. I’m driven by purpose,
-        fueled by Go, and passionate about simplifying complexity into reliable
-        backend services.
+        {profile.intro}
       </motion.h1>
 
       <motion.div className="flex flex-col sm:flex-row items-center justify-center gap-4 px-4 text-lg font-medium">
@@ -109,7 +91,7 @@ export default function Intro() {
         >
           <motion.a
             href="#contact"
-            className="group bg-gray-900  text-white/80 w-[80vw] sm:w-52 py-3 flex items-center justify-center gap-2 rounded-md outline-none focus:scale-110 active:scale-105 transition duration-300 hover:text-white text-sm xl:text-base uppercase text-center font-semibold dark:bg-[#FFD700] dark:text-black"
+            className="group bg-gray-900 text-white/80 w-[80vw] sm:w-52 py-3 flex items-center justify-center gap-2 rounded-md outline-none focus:scale-110 active:scale-105 transition duration-300 hover:text-white text-sm xl:text-base uppercase text-center font-semibold dark:bg-[#FFD700] dark:text-black"
             onClick={() => {
               setActiveSection("Contact");
               setTimeOfLastClick(Date.now());
@@ -127,7 +109,7 @@ export default function Intro() {
           className="hidden sm:block"
           drag
         >
-          <FaCat className="" />
+          <FaCat />
         </motion.span>
 
         <motion.div
@@ -136,36 +118,13 @@ export default function Intro() {
           transition={{ duration: 0.5, delay: 0.7 }}
         >
           <motion.a
-            className="group bg-white w-[80vw] sm:w-52 py-3 flex items-center justify-center gap-2 rounded-md outline-none focus:scale-110 active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 text-sm xl:text-base uppercase text-center font-semibold "
+            className="group bg-white w-[80vw] sm:w-52 py-3 flex items-center justify-center gap-2 rounded-md outline-none focus:scale-110 active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 text-sm xl:text-base uppercase text-center font-semibold"
             href="/cv.pdf"
             download
           >
             Download CV{" "}
             <HiDownload className="opacity-60 group-hover:translate-y-1 transition group-hover:opacity-100" />
           </motion.a>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 100 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.9 }}
-          className="flex items-center gap-6 md:hidden mt-4"
-        >
-          <a
-            href="https://www.linkedin.com/in/khairunnaufal-hanif"
-            target="_blank"
-            className="bg-transparent w-[2rem] h-[2rem] bg-opacity-80 backdrop-blur-md shadow-2xl rounded-full flex items-center justify-center active:scale-105 transition-all  opacity-80 hover:opacity-100 hover:scale-105 duration-300"
-          >
-            <FaLinkedin size={22} />
-          </a>
-
-          <a
-            href="https://github.com/Digisata"
-            target="_blank"
-            className="bg-transparent w-[2rem] h-[2rem] bg-opacity-80 backdrop-blur-md shadow-2xl rounded-full flex items-center justify-center active:scale-105 transition-all  opacity-80 hover:opacity-100 hover:scale-105 duration-300"
-          >
-            <FaGithub size={22} />
-          </a>
         </motion.div>
       </motion.div>
     </section>

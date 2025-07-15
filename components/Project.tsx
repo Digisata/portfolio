@@ -1,11 +1,9 @@
 "use client";
 
-import { useRef } from "react";
 import { projectsData } from "@/lib/data";
-import Image from "next/image";
 import { easeInOut, motion, useScroll, useTransform } from "framer-motion";
-import { FaGithub } from "react-icons/fa";
-import { GoLinkExternal } from "react-icons/go";
+import Image from "next/image";
+import { useRef } from "react";
 import { MdArrowOutward } from "react-icons/md";
 
 type ProjectProps = (typeof projectsData)[number];
@@ -58,21 +56,21 @@ export default function Project({
           </div>
 
           <Image
-            src={imageUrl}
+            src={imageUrl || "https://placehold.co/1875x962"}
             alt="Project I worked on"
-            quality={95}
+            width={1875} // or adjust as needed
+            height={962} // or adjust as needed
+            unoptimized
             className="absolute hidden sm:block top-8 -right-40 w-[28.25rem] rounded-t-lg shadow-2xl
-        transition-all duration-700
-        group-hover:scale-[1.01]
-        group-hover:-translate-x-1
-        group-hover:translate-y-1
-        group-hover:-rotate-1
-
-        group-even:group-hover:translate-x-1
-        group-even:group-hover:translate-y-1
-        group-even:group-hover:rotate-1
-
-        group-even:right-[initial] group-even:-left-40 "
+    transition-all duration-700
+    group-hover:scale-[1.01]
+    group-hover:-translate-x-1
+    group-hover:translate-y-1
+    group-hover:-rotate-1
+    group-even:group-hover:translate-x-1
+    group-even:group-hover:translate-y-1
+    group-even:group-hover:rotate-1
+    group-even:right-[initial] group-even:-left-40"
           />
         </section>
       </div>

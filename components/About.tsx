@@ -1,12 +1,15 @@
 "use client";
 
-import React from "react";
-import SectionHeading from "./SectionHeading";
-import { motion } from "framer-motion";
-
+import { CustomerResponse } from "@/lib/api";
 import { useSectionInView } from "@/lib/hooks";
+import { motion } from "framer-motion";
+import SectionHeading from "./SectionHeading";
 
-export default function About() {
+interface Props {
+  profile: CustomerResponse;
+}
+
+export default function About({ profile }: Props) {
   const { ref } = useSectionInView("About");
 
   return (
@@ -20,34 +23,8 @@ export default function About() {
     >
       <SectionHeading>About</SectionHeading>
 
-      <div className="text-center sm:text-start text-base lg:text-lg font-medium px-2">
-        <p className="mb-4">
-          <span className="font-bold text-4xl leading-10">I</span> began my
-          journey in software development as a mobile app developer, but quickly
-          discovered my passion for{" "}
-          <span className="font-bold underline">backend engineering</span>. Over
-          the years, I’ve built systems that impact millions—implementing SSO
-          platforms with OIDC & SAML, designing microservices architectures, and
-          optimizing APIs and databases for mission-critical platforms.
-        </p>
-
-        <p className="mb-4">
-          Whether I’m developing notification systems at BPJS, revamping legacy
-          monoliths into microservices for Korlantas Polri, or integrating RBAC
-          into multi-tenant POS systems, I approach each challenge with a
-          <span className="font-bold underline">
-            {" "}
-            mindset of continuous learning and cross-team collaboration
-          </span>
-          . My toolbox includes Go, PostgreSQL, Docker, Kafka, gRPC, Redis, and
-          more. Beyond just writing code, I believe in writing code that
-          lasts—maintainable, testable, and built for scale.
-        </p>
-
-        {/* <p>
-          <span className="font-bold"></span> Aside from building for the web, I
-          deeply enjoy playing volleyball and video games.
-        </p> */}
+      <div className="text-center sm:text-start text-base lg:text-lg font-medium px-2 whitespace-pre-line">
+        {profile.about}
       </div>
     </motion.section>
   );
