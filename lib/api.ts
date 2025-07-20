@@ -1,7 +1,7 @@
 // Generic fetch helper
 const fetchData = async <T>(endpoint: string): Promise<T> => {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:8000"}/${endpoint}`,
+    `${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:8000"}/api/${endpoint}`,
     {
       headers: { accept: "application/json" },
       cache: "no-store",
