@@ -4,7 +4,7 @@ import About from "@/components/About";
 import Contact from "@/components/Contact";
 import Intro from "@/components/Intro";
 import SectionDivider from "@/components/SectionDivider";
-import { CustomerResponse, getCustomerByEmail } from "@/lib/api";
+import { CustomerResponse, getCustomerProfile } from "@/lib/api";
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 
@@ -40,7 +40,7 @@ export default function Home() {
   useEffect(() => {
     const fetchCustomerData = async () => {
       try {
-        const res = await getCustomerByEmail("hnaufal123@gmail.com");
+        const res = await getCustomerProfile("hnaufal123@gmail.com");
         setProfile(res);
       } catch (error) {
         console.error("Failed to fetch customer profile:", error);

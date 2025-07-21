@@ -3,7 +3,10 @@ const fetchData = async <T>(endpoint: string): Promise<T> => {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:8000"}/api/${endpoint}`,
     {
-      headers: { accept: "application/json" },
+      headers: {
+        accept: "application/json",
+        "X-API-KEY": process.env.NEXT_PUBLIC_API_KEY || "",
+      },
       cache: "no-store",
     },
   );
@@ -31,7 +34,7 @@ export interface ExperienceResponse {
 }
 
 export const getExperiences = (): Promise<ExperienceResponse[]> => {
-  return fetchData<ExperienceResponse[]>("experience");
+  return fetchData<ExperienceResponse[]>("experiences");
 };
 
 // Project
@@ -47,7 +50,7 @@ export interface ProjectResponse {
 }
 
 export const getProjects = (): Promise<ProjectResponse[]> => {
-  return fetchData<ProjectResponse[]>("project");
+  return fetchData<ProjectResponse[]>("projects");
 };
 
 export interface SkillResponse {
@@ -58,7 +61,7 @@ export interface SkillResponse {
 }
 
 export const getSkills = (): Promise<SkillResponse[]> => {
-  return fetchData<SkillResponse[]>("skill");
+  return fetchData<SkillResponse[]>("skills");
 };
 
 export interface SocialResponse {
@@ -70,7 +73,7 @@ export interface SocialResponse {
 }
 
 export const getSocials = (): Promise<SocialResponse[]> => {
-  return fetchData<SocialResponse[]>("social");
+  return fetchData<SocialResponse[]>("socials");
 };
 
 export interface CustomerResponse {
@@ -85,8 +88,6 @@ export interface CustomerResponse {
   created_at: string;
 }
 
-export const getCustomerByEmail = (
-  email: string,
-): Promise<CustomerResponse> => {
-  return fetchData<CustomerResponse>(`customer/email/${email}`);
+export const getCustomerProfile = (): Promise<CustomerResponse> => {
+  return fetchData<CustomerResponse>(`customer/profile`);
 };
