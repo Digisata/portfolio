@@ -73,7 +73,7 @@ export default function Home() {
       <Intro profile={profile!} />
       <DynamicSocials />
       <SectionDivider />
-      <About profile={profile!} />
+      {profile.about && <About profile={profile!} />}
       <DynamicExperiences />
       <DynamicProjects />
       <DynamicSkills />

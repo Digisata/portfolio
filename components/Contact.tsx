@@ -44,26 +44,30 @@ const Contact = ({ profile }: Props) => {
       <p className="my-2">Let&apos;s talk about working together!</p>
 
       <div className="flex justify-center items-center gap-3 flex-col sm:flex-row w-full sm:w-auto mx-auto mt-5 cursor-pointer">
-        <a
-          href={`tel:${profile.phone}`}
-          className="group bg-gray-900 text-white/80 w-[80vw] sm:w-52 py-3 flex items-center justify-center gap-2 rounded-md outline-none focus:scale-110 active:scale-105 transition duration-300 hover:text-white text-sm xl:text-base uppercase text-center font-semibold dark:bg-[#FFD700] dark:text-black"
-          onClick={handleBookCall}
-        >
-          <FaPhone /> Book a Call
-        </a>
+        {profile.phone && (
+          <a
+            href={`tel:${profile.phone}`}
+            className="group bg-gray-900 text-white/80 w-[80vw] sm:w-52 py-3 flex items-center justify-center gap-2 rounded-md outline-none focus:scale-110 active:scale-105 transition duration-300 hover:text-white text-sm xl:text-base uppercase text-center font-semibold dark:bg-[#FFD700] dark:text-black"
+            onClick={handleBookCall}
+          >
+            <FaPhone /> Book a Call
+          </a>
+        )}
         <a
           className="group bg-gray-900 text-white/80 w-[80vw] sm:w-52 py-3 flex items-center justify-center gap-2 rounded-md outline-none focus:scale-110 active:scale-105 transition duration-300 hover:text-white text-sm xl:text-base uppercase text-center font-semibold dark:bg-[#FFD700] dark:text-black"
           onClick={handleCopyEmail}
         >
           <FaCopy /> Copy Email
         </a>
-        <a
-          className="group bg-gray-900 text-white/80 w-[80vw] sm:w-52 py-3 flex items-center justify-center gap-2 rounded-md outline-none focus:scale-110 active:scale-105 transition duration-300 hover:text-white text-sm xl:text-base uppercase text-center font-semibold dark:bg-[#FFD700] dark:text-black"
-          href={profile.wa_link}
-          onClick={handleWhatsappDM}
-        >
-          <FaWhatsapp /> DM Me
-        </a>
+        {profile.wa_link && (
+          <a
+            className="group bg-gray-900 text-white/80 w-[80vw] sm:w-52 py-3 flex items-center justify-center gap-2 rounded-md outline-none focus:scale-110 active:scale-105 transition duration-300 hover:text-white text-sm xl:text-base uppercase text-center font-semibold dark:bg-[#FFD700] dark:text-black"
+            href={profile.wa_link}
+            onClick={handleWhatsappDM}
+          >
+            <FaWhatsapp /> DM Me
+          </a>
+        )}
       </div>
 
       <div className="flex items-center justify-center mt-6 hover:scale-110 transition-all duration-500">
