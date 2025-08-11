@@ -26,7 +26,6 @@ export interface ExperienceResponse {
   location: string;
   start_date: string;
   end_date: string;
-  is_present: boolean;
   position: string;
   description: string[];
   order: number;

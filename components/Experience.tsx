@@ -49,7 +49,7 @@ export default function Experience({ data }: Props) {
           </span>
           <span className="flex items-center gap-1">
             <MdOutlineDateRange className="text-base" />
-            {`${formatDateRange(data.start_date, data.end_date, data.is_present)}`}
+            {`${formatDateRange(data.start_date, data.end_date)}`}
           </span>
         </div>
 
@@ -68,16 +68,12 @@ export default function Experience({ data }: Props) {
 }
 
 // Helper to format date range
-function formatDateRange(
-  start: string,
-  end: string,
-  isPresent: boolean,
-): string {
+function formatDateRange(start: string, end: string): string {
   const startDate = new Date(start);
-  const endDate = isPresent ? new Date() : new Date(end);
+  const endDate = !end ? new Date() : new Date(end);
 
   const format = (d: Date) =>
     `${d.toLocaleString("default", { month: "short" })} ${d.getFullYear()}`;
 
-  return `${format(startDate)} - ${isPresent ? "Present" : format(endDate)}`;
+  return `${format(startDate)} - ${!end ? "Present" : format(endDate)}`;
 }
