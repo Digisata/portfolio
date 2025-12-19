@@ -1,11 +1,13 @@
 "use client";
 
+import { easeInOut, motion } from "framer-motion";
 import clsx from "clsx";
-import { motion } from "framer-motion";
 import Link from "next/link";
 
-import { useActiveSectionContext } from "@/context/active-section-context";
 import { links } from "@/lib/data";
+import { useContext, useState } from "react";
+import { useActiveSectionContext } from "@/context/active-section-context";
+import Image from "next/image";
 
 const Header = () => {
   const { activeSection, setActiveSection, setTimeOfLastClick } =

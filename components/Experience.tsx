@@ -1,8 +1,8 @@
 "use client";
 
+import { useRef } from "react";
 import { experienceData } from "@/lib/data";
 import { easeInOut, motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
 
 import { GoLocation } from "react-icons/go";
 import { MdOutlineDateRange } from "react-icons/md";
