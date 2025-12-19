@@ -74,16 +74,14 @@ export default function Intro({ profile }: Props) {
         </motion.div>
       </motion.div>
 
-      {profile.intro && (
-        <motion.h1
-          className="mb-10 mt-4 px-4 text-base font-medium !leading-[1.5] sm:text-base lg:text-[17px] 2xl:text-[20px] w-full sm:w-[60%] mx-auto dark:text-gray-300 dark:font-medium text-center"
-          initial={{ opacity: 0, y: 100 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-        >
-          {profile.intro}
-        </motion.h1>
-      )}
+      <motion.h1
+        className="mb-10 mt-4 px-4 text-base font-medium !leading-[1.5] sm:text-base lg:text-[17px] 2xl:text-[20px] w-full sm:w-[60%] mx-auto dark:text-gray-300 dark:font-medium text-center"
+        initial={{ opacity: 0, y: 100 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.5 }}
+      >
+        {profile.intro}
+      </motion.h1>
 
       <motion.div className="flex flex-col sm:flex-row items-center justify-center gap-4 px-4 text-lg font-medium">
         <motion.div
