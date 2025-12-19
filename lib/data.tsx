@@ -67,7 +67,7 @@ export const projectsData = [
       "Contributed to the development of a multi-tenant POS backend for merchants and cashiers, implementing RBAC, inventory management, product handling, and transactional operations with RESTful APIs.",
     tags: ["Golang", "PostgreSQL", "RBAC", "REST API"],
     imageUrl: smart,
-    live: "http://ec2-108-137-50-105.ap-southeast-3.compute.amazonaws.com/login",
+    live: "https://admin.dev.logistar.io/login",
   },
   {
     title: "K3I Microservices Migration",
@@ -113,10 +113,22 @@ export const projectsData = [
 
 export const experienceData = [
   {
+    company: "PT Logistar Cakra Solusi",
+    location: "South Jakarta, DKI",
+    position: "Backend Engineer",
+    period: "October 2024 – Present",
+    type: "Full-time",
+    bullets: [
+      "Develop multi-tenant POS applications mainly using Go and SQL, which provide an interface (API) for web apps (dashboard) and mobile apps.",
+      "Implements RBAC for multiple roles (Merchant, staff, and cashier).",
+      "Integrated with a payment gateway to seamlessly and effortlessly process payments.",
+    ],
+  },
+  {
     company: "PT.Sinergi Rajawali Mataram",
     location: "South Jakarta, DKI",
     position: "Backend Engineer",
-    period: "November 2024 – Present",
+    period: "November 2024 – October 2025",
     type: "Contract",
     bullets: [
       "Placement at Direktorat Jenderal Imigrasi.",
