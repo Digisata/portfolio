@@ -114,7 +114,7 @@ export const projectsData = [
 export const experienceData = [
   {
     company: "PT Logistar Cakra Solusi",
-    location: "South Jakarta, DKI",
+    location: "Remote",
     position: "Backend Engineer",
     period: "October 2024 – Present",
     type: "Full-time",
