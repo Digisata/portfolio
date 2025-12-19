@@ -40,7 +40,7 @@ export default function Home() {
   useEffect(() => {
     const fetchCustomerData = async () => {
       try {
-        const res = await getCustomerProfile();
+        const res = await getCustomerProfile("hnaufal123@gmail.com");
         setProfile(res);
       } catch (error) {
         console.error("Failed to fetch customer profile:", error);
