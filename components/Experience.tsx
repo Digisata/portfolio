@@ -56,13 +56,11 @@ export default function Experience({ data }: Props) {
         <p className="mt-1 text-sm font-medium">{data.position}</p>
       </div>
 
-      {data.description && (
-        <ul className="list-disc pl-5 space-y-1 text-gray-800 dark:text-white/80 text-sm">
-          {data.description.map((item, i) => (
-            <li key={i}>{item}</li>
-          ))}
-        </ul>
-      )}
+      <ul className="list-disc pl-5 space-y-1 text-gray-800 dark:text-white/80 text-sm">
+        {data.description.map((item, i) => (
+          <li key={i}>{item}</li>
+        ))}
+      </ul>
     </motion.div>
   );
 }
