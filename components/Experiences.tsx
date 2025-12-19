@@ -34,10 +34,33 @@ export default function Experiences() {
       ) : (
         <div>
           {experiences.map((exp) => (
-            <Experience key={exp._id} data={exp} />
+            <Experience
+              key={exp._id}
+              company={exp.company}
+              location={exp.location}
+              position={exp.position}
+              period={`${formatDateRange(exp.start_date, exp.end_date, exp.is_present)}`}
+              type={exp.work_type}
+              bullets={exp.description}
+            />
           ))}
         </div>
       )}
     </section>
   );
+}
+
+// Helper to format date range
+function formatDateRange(
+  start: string,
+  end: string,
+  isPresent: boolean,
+): string {
+  const startDate = new Date(start);
+  const endDate = isPresent ? new Date() : new Date(end);
+
+  const format = (d: Date) =>
+    `${d.toLocaleString("default", { month: "short" })} ${d.getFullYear()}`;
+
+  return `${format(startDate)} - ${isPresent ? "Present" : format(endDate)}`;
 }

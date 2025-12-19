@@ -1,17 +1,22 @@
 "use client";
 
-import { ExperienceResponse } from "@/lib/api";
+import { experienceData } from "@/lib/data";
 import { easeInOut, motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
 import { GoLocation } from "react-icons/go";
 import { MdOutlineDateRange } from "react-icons/md";
 
-interface Props {
-  data: ExperienceResponse;
-}
+type ExperienceProps = (typeof experienceData)[number];
 
-export default function Experience({ data }: Props) {
+export default function Experience({
+  company,
+  location,
+  position,
+  period,
+  type,
+  bullets,
+}: ExperienceProps) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -35,47 +40,32 @@ export default function Experience({ data }: Props) {
     >
       <div className="mb-2">
         <h3 className="text-xl font-semibold">
-          {data.company}
+          {company}
           <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
             {" "}
-            | {data.work_type}
+            | {type}
           </span>
         </h3>
 
         <div className="flex flex-wrap items-center gap-4 text-sm text-gray-700 dark:text-white/70">
           <span className="flex items-center gap-1">
             <GoLocation className="text-base" />
-            {data.location}
+            {location}
           </span>
           <span className="flex items-center gap-1">
             <MdOutlineDateRange className="text-base" />
-            {`${formatDateRange(data.start_date, data.end_date, data.is_present)}`}
+            {period}
           </span>
         </div>
 
-        <p className="mt-1 text-sm font-medium">{data.position}</p>
+        <p className="mt-1 text-sm font-medium">{position}</p>
       </div>
 
       <ul className="list-disc pl-5 space-y-1 text-gray-800 dark:text-white/80 text-sm">
-        {data.description.map((item, i) => (
+        {bullets.map((item, i) => (
           <li key={i}>{item}</li>
         ))}
       </ul>
     </motion.div>
   );
-}
-
-// Helper to format date range
-function formatDateRange(
-  start: string,
-  end: string,
-  isPresent: boolean,
-): string {
-  const startDate = new Date(start);
-  const endDate = isPresent ? new Date() : new Date(end);
-
-  const format = (d: Date) =>
-    `${d.toLocaleString("default", { month: "short" })} ${d.getFullYear()}`;
-
-  return `${format(startDate)} - ${isPresent ? "Present" : format(endDate)}`;
 }
